@@ -137,12 +137,12 @@ execute the following command to download the image and create the container.
 Clone the repository and catkin_make:
 
 ```
-    cd ~/$A_ROS_DIR$/src
-    git clone https://github.com/hku-mars/FAST_LIO.git
-    cd FAST_LIO
+    cd ~/EasonDrone/SLAM
+    git clone https://github.com/HuaYuXiao/FAST-LIO2.git --recursive
+    cd ~/EasonDrone/SLAM/FAST-LIO2
     git submodule update --init
-    cd ../..
-    catkin_make
+    cd ~/EasonDrone
+    catkin_make install --source SLAM/FAST-LIO2 --build SLAM/FAST-LIO2/build
     source devel/setup.bash
 ```
 - Remember to source the livox_ros_driver before build (follow 1.3 **livox_ros_driver**)
@@ -200,6 +200,10 @@ Step B: Run below
     cd ~/$FAST_LIO_ROS_DIR$
     source devel/setup.bash
     roslaunch fast_lio mapping_velodyne.launch
+```
+
+```shell
+roslaunch fast_lio simulation.launch
 ```
 
 Step C: Run LiDAR's ros driver or play rosbag.
