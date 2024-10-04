@@ -224,7 +224,7 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /easondrone/drone_trajectory
+          Topic: /odom_visualization/path
           Unreliable: false
           Value: true
         - Alpha: 0
