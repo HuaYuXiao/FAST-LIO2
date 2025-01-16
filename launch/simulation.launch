@@ -1,5 +1,9 @@
 <launch>
-    <include file="$(find easondrone_gazebo)/launch/mavros_posix_sitl.launch"/>
+    <include file="$(find easondrone_gazebo)/launch/mavros_posix_sitl.launch">
+        <arg name="sdf" default="$(find easondrone_gazebo)/models/drone/iris_d435i_vlp16/iris_d435i_vlp16.sdf"/>
+    </include>
+
+    <node name="filter_pc" type="filter_pc" pkg="easondrone_mapping"/>
 
     <include file="$(find easondrone_gazebo)/launch/transform.launch"/>
 
@@ -7,10 +11,8 @@
 
     <node type="odom_visualization" pkg="odom_visualization" name="odom_visualization"/>
 
-    <!-- 启动FAST-LIO建图 -->
     <include file="$(find fast_lio)/launch/mapping_velodyne.launch"/>
 
-    <!-- 启动rviz -->
     <node pkg="rviz" type="rviz" name="rviz"
           args="-d $(find fast_lio)/rviz_cfg/loam_livox.rviz" launch-prefix="nice"/>
 </launch>
